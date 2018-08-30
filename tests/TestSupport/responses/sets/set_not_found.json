@@ -1,0 +1,6 @@
+{
+  "object": "error",
+  "code": "not_found",
+  "status": 404,
+  "details": "No set found for the given code."
+}

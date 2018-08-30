@@ -1,0 +1,18 @@
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "object": "ruling",
+      "source": "wotc",
+      "published_at": "2016-07-13",
+      "comment": "For more information on double-faced cards, see the Shadows over Innistrad mechanics article (http://magic.wizards.com/en/articles/archive/feature/shadows-over-innistrad-mechanics)."
+    },
+    {
+      "object": "ruling",
+      "source": "wotc",
+      "published_at": "2011-09-22",
+      "comment": "You may reveal the card even if it’s not an instant or sorcery. Whether or not you reveal it, the card stays on top of your library."
+    }
+  ]
+}
