@@ -65,5 +65,5 @@ $collSymbols = $client->symbols()->all();
 $arrSymbols = $collSymbols->symbols();
  
 // Parse your string to symbols
-$parsed = $client->symbols()->parse(RGx); // Returns {X}{R}{G}
+$parsed = $client->symbols()->parse('RGx'); // Returns {X}{R}{G}
 ```
