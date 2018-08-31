@@ -21,6 +21,9 @@ class Set extends Base
     public $mtgoCode;
 
     /** @var string */
+    public $name;
+
+    /** @var string */
     public $release;
 
     /** @var string */
@@ -34,6 +37,9 @@ class Set extends Base
 
     /** @var int */
     public $cardCount;
+
+    /** @var bool */
+    public $digitalOnly;
 
     /** @var bool */
     public $foilOnly;
@@ -55,11 +61,13 @@ class Set extends Base
         $this->object = @$data->object;
         $this->code = @$data->code;
         $this->mtgoCode = @$data->mtgo_code;
+        $this->name = @$data->name;
         $this->release = @$data->released_at;
         $this->setType = @$data->set_type;
         $this->block = @$data->block;
         $this->blockCode = @$data->block_code;
         $this->cardCount = @$data->card_count;
+        $this->digitalOnly = @$data->digital;
         $this->foilOnly = @$data->foil_only;
     }
 
