@@ -15,6 +15,9 @@ class Set extends Base
     public $object;
 
     /** @var string */
+    public $parent;
+
+    /** @var string */
     public $code;
 
     /** @var string */
@@ -59,6 +62,7 @@ class Set extends Base
         }
 
         $this->object = @$data->object;
+        $this->parent = @$data->parent_set_code;
         $this->code = @$data->code;
         $this->mtgoCode = @$data->mtgo_code;
         $this->name = @$data->name;
