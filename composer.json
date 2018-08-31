@@ -3,6 +3,7 @@
 	"homepage": "http://www.ypho.nl",
 	"keywords": ["scryfall", "scryfall.com", "api wrapper"],
     "description": "A wrapper around the API from Scryfall (scryfall.com)",
+    "license": "Apache-2.0",
     "require": {
 	    "php": ">=7.1",
         "ext-curl": "*",
