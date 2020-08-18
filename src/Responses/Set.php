@@ -82,6 +82,6 @@ class Set extends Base
      */
     public function getCards(Client $client)
     {
-        return $client->cards()->search('set:' . $this->code, 'print', 'set');
+        return $client->cards()->search('set:' . $this->code, 'prints', 'set');
     }
 }
