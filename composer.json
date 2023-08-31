@@ -1,32 +1,26 @@
 {
     "name": "ypho/scryfall",
-	"homepage": "http://www.ypho.nl",
-	"keywords": ["scryfall", "scryfall.com", "api wrapper"],
+	"homepage": "https://ypho.nl",
+	"keywords": ["scryfall", "scryfall.com", "api wrapper", "magic the gathering", "magic"],
     "description": "A wrapper around the API from Scryfall (scryfall.com)",
     "license": "Apache-2.0",
     "require": {
-	    "php": ">=7.1",
+	    "php": "^7.4|^8.0",
         "ext-curl": "*",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "~6.3",
-        "symfony/dom-crawler": "*",
-        "symfony/browser-kit": "*",
-        "symfony/css-selector": "*"
+        "guzzlehttp/guzzle": "^6.3|^7.8"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.1"
+        "phpunit/phpunit": ">8"
     },
     "autoload": {
         "psr-4": {
-            "Ypho\\Scryfall\\": "src",
-            "Ypho\\Scryfall\\Endpoint\\": "src/Endpoint",
-            "Ypho\\Scryfall\\Exception\\": "src/Exception",
-            "Ypho\\Scryfall\\Responses\\": "src/Responses"
+            "Ypho\\Scryfall\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Ypho\\Scryfall\\Tests\\": "tests/"
         }
     },
     "authors": [

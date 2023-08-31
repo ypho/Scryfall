@@ -2,70 +2,54 @@
 
 namespace Ypho\Scryfall;
 
+use Exception;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Response;
-use Ypho\Scryfall\Endpoint\Cards;
-use Ypho\Scryfall\Endpoint\Sets;
-use Ypho\Scryfall\Endpoint\Symbols;
+use Ypho\Scryfall\Endpoints\CardEndpoint;
+use Ypho\Scryfall\Endpoints\SetEndpoint;
+use Ypho\Scryfall\Endpoints\SymbologyEndpoint;
 use Ypho\Scryfall\Exception\ScryfallException;
 
 class Client
 {
-    /** @var \GuzzleHttp\Client */
-    protected $guzzle;
+    const BASE_URI = 'https://api.scryfall.com/';
 
-    /** @var string */
-    protected $baseURI;
+    private \GuzzleHttp\Client $guzzle;
 
-    /**
-     * Client constructor.
-     * @param null $httpClient
-     */
-    public function __construct($httpClient = null)
+    public function __construct(\GuzzleHttp\Client $httpClient = null)
     {
-        $this->baseURI = 'https://api.scryfall.com/';
+        $this->guzzle = $httpClient ?? new \GuzzleHttp\Client([
+            'headers' => ['Content-Type' => 'application/json'],
+            'base_uri' => self::BASE_URI,
+        ]);
+    }
 
-        if (is_null($httpClient)) {
-            $this->guzzle = new \GuzzleHttp\Client([
-                'base_uri' => $this->baseURI,
-            ]);
-        } else {
-            $this->guzzle = $httpClient;
-        }
+    public function sets(): SetEndpoint
+    {
+        return new SetEndpoint($this);
+    }
+
+    public function symbology(): SymbologyEndpoint
+    {
+        return new SymbologyEndpoint($this);
+    }
+
+    public function cards(): CardEndpoint
+    {
+        return new CardEndpoint($this);
     }
 
     /**
-     * @return Sets
-     */
-    public function sets()
-    {
-        return new Sets($this);
-    }
-
-    /**
-     * @return Cards
-     */
-    public function cards()
-    {
-        return new Cards($this);
-    }
-
-    /**
-     * @return Symbols
-     */
-    public function symbols()
-    {
-        return new Symbols($this);
-    }
-
-    /**
-     * @param $method
-     * @param $url
-     * @param null $parameters
-     * @return Response
+     * Fires a call to Scryfall and returns either a ScryfallException or an array with data.
+     *
+     * @param string $url
+     * @param string $method
+     * @param array $parameters
+     * @return mixed
      * @throws ScryfallException
      */
-    public function send($method, $url, $parameters = null)
+    public function fetchResponse(string $url, string $method = 'GET', array $parameters = []): array
     {
         try {
             // If we have GET or PUT, and we have parameters, add them to the URL
@@ -74,17 +58,17 @@ class Client
             }
 
             /** @var Response $response */
-            $response = $this->guzzle->request($method, $this->baseURI . $url, [
-                'body' => (in_array($method, ['POST']) ? $this->getXml($parameters) : '')
+            $response = $this->guzzle->request($method, $url, [
+                'body' => json_encode([$parameters])
             ]);
 
-            return $response;
+            return json_decode($response->getBody()->getContents(), true);
         } catch (ClientException $ex) {
             $json = json_decode($ex->getResponse()->getBody()->getContents());
             throw new ScryfallException($json->details, $ex->getCode());
-        }  catch (\GuzzleHttp\Exception\GuzzleException $ex) {
+        } catch (GuzzleException $ex) {
             throw new ScryfallException($ex->getMessage(), $ex->getCode());
-        } catch (\Exception $ex) {
+        } catch (Exception $ex) {
             throw new ScryfallException($ex->getMessage(), $ex->getCode());
         }
     }
@@ -95,7 +79,7 @@ class Client
      * @param array $parameters
      * @return string
      */
-    protected function generateParameterString($parameters)
+    private function generateParameterString(array $parameters): string
     {
         // Start string with ?
         $string = '?';
@@ -109,8 +93,6 @@ class Client
         }
 
         // Remove last &
-        $string = substr($string, 0, -1);
-
-        return $string;
+        return substr($string, 0, -1);
     }
 }
