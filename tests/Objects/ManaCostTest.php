@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ManaCostTest extends TestCase
 {
-    public function testCreateFromApi()
+    public function testManaCost()
     {
         $manaCost = file_get_contents(__DIR__ . '/../../examples/json/mana_cost.json');
         $mana = ManaCost::createFromApi(json_decode($manaCost, true));

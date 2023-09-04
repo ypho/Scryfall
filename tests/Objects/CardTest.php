@@ -5,6 +5,7 @@ namespace Ypho\Scryfall\Tests\Objects;
 use DateTime;
 use Ypho\Scryfall\Objects\Card;
 use PHPUnit\Framework\TestCase;
+use Ypho\Scryfall\Objects\RelatedCard;
 
 class CardTest extends TestCase
 {
@@ -144,5 +145,25 @@ class CardTest extends TestCase
         $this->assertNull($card->getPreviewedAt());
         $this->assertNull($card->getPreviewUrl());
         $this->assertNull($card->getPreviewSource());
+    }
+
+    public function testVanguardCard()
+    {
+        $ashnod = file_get_contents(__DIR__ . '/../../examples/json/vanguard_ashnod.json');
+        $card = Card::createFromApi(json_decode($ashnod, true));
+
+        $this->assertEquals('Vanguard', $card->getTypeLine());
+        $this->assertEquals('vanguard', $card->getLayout());
+        $this->assertEquals('+1', $card->getHandModifier());
+        $this->assertEquals('-8', $card->getLifeModifier());
+    }
+
+    public function testRelatedParts()
+    {
+        $fableOfTheMirrorBreaker = file_get_contents(__DIR__ . '/../../examples/json/fable_of_the_mirror_breaker.json');
+        $card = Card::createFromApi(json_decode($fableOfTheMirrorBreaker, true));
+
+        $this->assertCount(4, $card->getRelatedParts());
+        $this->assertContainsOnlyInstancesOf(RelatedCard::class, $card->getRelatedParts());
     }
 }

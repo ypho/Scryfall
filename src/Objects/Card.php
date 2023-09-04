@@ -284,11 +284,17 @@ class Card implements ScryfallObject
         return $this->url;
     }
 
+    /**
+     * @return array<RelatedCard>|null
+     */
     public function getRelatedParts(): ?array
     {
         return $this->relatedParts;
     }
 
+    /**
+     * @return array<CardFace>|null
+     */
     public function getCardFaces(): ?array
     {
         return $this->cardFaces;

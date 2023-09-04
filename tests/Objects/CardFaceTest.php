@@ -8,7 +8,7 @@ use Ypho\Scryfall\Objects\CardFace;
 
 class CardFaceTest extends TestCase
 {
-    public function testCreateFromApi()
+    public function testCardFace()
     {
         $delverOfSecrets = file_get_contents(__DIR__ . '/../../examples/json/delver_of_secrets.json');
         $card = Card::createFromApi(json_decode($delverOfSecrets, true));

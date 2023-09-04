@@ -1,0 +1,18 @@
+{
+  "object": "card_symbol",
+  "symbol": "{T}",
+  "svg_uri": "https://svgs.scryfall.io/card-symbols/T.svg",
+  "loose_variant": null,
+  "english": "tap this permanent",
+  "transposable": false,
+  "represents_mana": false,
+  "appears_in_mana_costs": false,
+  "mana_value": 0,
+  "cmc": 0,
+  "funny": false,
+  "colors": [],
+  "gatherer_alternates": [
+    "ocT",
+    "oT"
+  ]
+}

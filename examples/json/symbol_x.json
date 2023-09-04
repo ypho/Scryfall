@@ -1,0 +1,18 @@
+{
+  "object": "card_symbol",
+  "symbol": "{X}",
+  "svg_uri": "https://svgs.scryfall.io/card-symbols/X.svg",
+  "loose_variant": "X",
+  "english": "X generic mana",
+  "transposable": false,
+  "represents_mana": true,
+  "appears_in_mana_costs": true,
+  "mana_value": 0,
+  "cmc": 0,
+  "funny": false,
+  "colors": [],
+  "gatherer_alternates": [
+    "oX",
+    "ooX"
+  ]
+}
