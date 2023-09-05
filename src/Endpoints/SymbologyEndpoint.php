@@ -25,13 +25,13 @@ class SymbologyEndpoint
      * @return array<Symbol>
      * @throws ScryfallException
      */
-    public function all():array
+    public function all(): array
     {
         try {
             $response = $this->client->fetchResponse('symbology');
 
             $arrSymbols = [];
-            foreach($response['data'] as $setData) {
+            foreach ($response['data'] as $setData) {
                 $arrSymbols[] = Symbol::createFromApi($setData);
             }
 

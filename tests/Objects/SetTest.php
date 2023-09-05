@@ -10,7 +10,7 @@ class SetTest extends TestCase
 {
     public function testSet()
     {
-        $pioneerChallenger2021 = file_get_contents(__DIR__ . '/../../examples/json/pioneer_challenger_2021.json');
+        $pioneerChallenger2021 = file_get_contents(__DIR__ . '/../../examples/json/set_pioneer_challenger_2021.json');
         $set = Set::createFromApi(json_decode($pioneerChallenger2021, true));
 
         $this->assertInstanceOf(Set::class, $set);
