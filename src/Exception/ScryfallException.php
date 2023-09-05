@@ -5,12 +5,13 @@ namespace Ypho\Scryfall\Exception;
 class ScryfallException extends \Exception
 {
     /**
-     * ScryfallException constructor.
-     * @param null $message
+     * @param string $message
      * @param int $code
      */
-    public function __construct($message = null, $code = 400)
+    public function __construct(string $message, int $code = 400)
     {
+        parent::__construct();
+
         $this->message = $message;
         $this->code = $code;
     }

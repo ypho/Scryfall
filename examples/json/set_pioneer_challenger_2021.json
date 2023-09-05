@@ -1,0 +1,16 @@
+{
+  "object": "set",
+  "id": "ae1cbc8b-eb24-4e7e-9cd4-6691f5478767",
+  "code": "q06",
+  "name": "Pioneer Challenger Decks 2021",
+  "uri": "https://api.scryfall.com/sets/ae1cbc8b-eb24-4e7e-9cd4-6691f5478767",
+  "scryfall_uri": "https://scryfall.com/sets/q06",
+  "search_uri": "https://api.scryfall.com/cards/search?include_extras=true\u0026include_variations=true\u0026order=set\u0026q=e%3Aq06\u0026unique=prints",
+  "released_at": "2021-10-15",
+  "set_type": "box",
+  "card_count": 10,
+  "digital": false,
+  "nonfoil_only": true,
+  "foil_only": false,
+  "icon_svg_uri": "https://svgs.scryfall.io/sets/star.svg?1693195200"
+}

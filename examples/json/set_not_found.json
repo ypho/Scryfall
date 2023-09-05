@@ -1,0 +1,6 @@
+{
+  "object": "error",
+  "code": "not_found",
+  "status": 404,
+  "details": "No Magic set found for the given code or ID"
+}
